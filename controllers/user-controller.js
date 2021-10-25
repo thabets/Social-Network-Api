@@ -47,7 +47,9 @@ const userController = {
           {
             username,
           },
-          { thoughts }
+          {
+            $pull: { thoughts },
+          }
         );
       })
 
