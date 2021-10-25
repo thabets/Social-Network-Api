@@ -5,10 +5,9 @@ const {
   deleteReaction,
 } = require("../../controllers/reaction-controller");
 
+router.route("/").post(addReactionToThought);
+
 // /api/thoughts/:thoughtId/reactions
-router
-  .route("/thought/:thoughtId/reaction")
-  .post(addReactionToThought)
-  .delete(deleteReaction);
+router.route("/thought/:thoughtId/reaction").delete(deleteReaction);
 
 module.exports = router;
