@@ -10,8 +10,8 @@ const thoughtController = {
       });
   },
   getThoughtById({ params }, res) {
-    Thought.findOne({ _id: params.id })
-      .then((dbThoughtData = res.json(dbThoughtData)))
+    Thought.findOne({ _id: params.thoughtId })
+      .then((dbThoughtData) => res.json(dbThoughtData))
       .catch((err) => {
         console.log(err);
         res.sendStatus(400);

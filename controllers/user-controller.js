@@ -10,7 +10,7 @@ const userController = {
       });
   },
   getUserById({ params }, res) {
-    User.findOne({ _id: params.id })
+    User.findOne({ _id: params.userId })
       .then((dbUserData) => res.json(dbUserData))
       .catch((err) => {
         console.log(err);
@@ -23,7 +23,7 @@ const userController = {
       .catch((err) => res.json(err));
   },
   updateUser({ params, body }, res) {
-    User.findOneAndUpdate({ _id: params.id }, body, {
+    User.findOneAndUpdate({ _id: params.userId }, body, {
       new: true,
       runValidators: true,
     })
@@ -38,22 +38,17 @@ const userController = {
       })
       .catch((err) => res.json(err));
   },
-  deleteUser(req, res) {
+  deleteUser({ params }, res) {
     User.findOneAndDelete({
-      _id: req.params.id,
+      _id: params.userId,
     })
       .then(({ username }) => {
-        return Thought.deleteMany(
-          {
-            username,
-          },
-          {
-            $pull: { thoughts },
-          }
-        );
+        return Thought.deleteMany({
+          username,
+        });
       })
 
-      .then((dbUserData) => res.json(dbUserData))
+      .then((dbUserData) => res.json("Success Deleted"))
       .catch((err) => res.json(err));
   },
 };

@@ -4,10 +4,10 @@ const {
   addReactionToThought,
   deleteReaction,
 } = require("../../controllers/reaction-controller");
+// http:localhost:3001/api/reaction/:thoughtId
+router.route("/:thoughtId").post(addReactionToThought);
 
-router.route("/").post(addReactionToThought);
-
-// /api/thoughts/:thoughtId/reactions
-router.route("/thought/:thoughtId/reaction").delete(deleteReaction);
+// /api/reaction/:thoughtId/:reactionId
+router.route("/:thoughtId/:reactionId").delete(deleteReaction);
 
 module.exports = router;

@@ -4,7 +4,7 @@ const reactionController = {
   addReactionToThought({ params, body }, res) {
     Thought.findOneAndUpdate(
       { _id: params.thoughtId },
-      { $pus: { reaction: body } },
+      { $push: { reactions: body } },
       { new: true, runValidators: true }
     )
       .then((dbUserData) => {
@@ -19,8 +19,7 @@ const reactionController = {
   deleteReaction({ params }, res) {
     Thought.findOneAndUpdate(
       { _id: params.thoughtId },
-      { $pull: { reaction: { reactionId: params.reactionId } } },
-      { new: true }
+      { $pull: { reactions: { reactionId: params.reactionId } } }
     )
       .then((dbUserData) => {
         if (!dbUserData) {
@@ -29,7 +28,10 @@ const reactionController = {
         }
         res.json(dbUserData);
       })
-      .catch((err) => res.json(err));
+      .catch((err) => {
+        console.log(err);
+        res.json(err);
+      });
   },
 };
 module.exports = reactionController;
