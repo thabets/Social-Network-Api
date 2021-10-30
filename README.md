@@ -70,4 +70,4 @@ If you want to contact me you can reach me at <sallam.thabet@gmail.com>.
 
 ## License
 
-This project uses the following license: ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+This project uses the following license: [MIT](https://opensource.org/licenses/MIT).
