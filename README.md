@@ -20,9 +20,9 @@
 
 ## [license](#license)
 
-# Project name Social
+# Project name
 
-Network API
+Social Network API
 
 # Project Creator
 
